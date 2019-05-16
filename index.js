@@ -6,7 +6,9 @@ const puppeteer = require('puppeteer');
 const login = require('./login');
 
 (async () => {
-    const browser = await puppeteer.launch({ headless: false });
+    const headless = process.env.INTERFACE !== "true"
+
+    const browser = await puppeteer.launch({ headless });
     const page = await browser.newPage();
 
     // go to main page
@@ -22,14 +24,14 @@ const login = require('./login');
     ])
 
     // a little stop
-    await page.waitFor(1000)
+    if (!headless) await page.waitFor(1000)
 
     // do report
     await page.click('button#btnGuardar')
     console.log('Report OK')
 
     // other little stop
-    await page.waitFor(3000)
+    if (!headless) await page.waitFor(3000)
 
     await browser.close();
 })();
