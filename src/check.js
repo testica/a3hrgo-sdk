@@ -1,5 +1,7 @@
 'use strict';
 
+const Login = require('./login');
+
 module.exports = async ({user, password}) => {
 
     const headless = process.env.INTERFACE !== "true"
@@ -11,7 +13,7 @@ module.exports = async ({user, password}) => {
     await page.goto('https://ecolex.a3hrgo.com');
     
     // do login
-    await login(page, user, password);
+    await Login(page, user, password);
     
     // go to report page
     await Promise.all([
