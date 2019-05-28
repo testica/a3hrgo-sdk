@@ -44,3 +44,14 @@ To run the script you only have to do:
 `npm start`
 
 (Be careful, run this only when be necessary, so you can fuck up your report history)
+
+
+---
+
+Also, you can make a symlink and run from everywhere
+
+`npm link`
+
+Now, run wherever you want using
+
+`a3hrgo-assistant`
