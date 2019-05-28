@@ -12,5 +12,8 @@
   "dependencies": {
     "dotenv": "^8.0.0",
     "puppeteer": "^1.16.0"
+  },
+  "bin": {
+    "a3hrgo-assistant": "./index.js"
   }
 }
