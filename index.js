@@ -1,6 +1,9 @@
 'use strict'
 
-require('dotenv').config()
+require('dotenv').config({
+    path: `${require('path').dirname(require.main.filename)}/.env`
+})
+
 const puppeteer = require('puppeteer');
 
 const login = require('./login');
