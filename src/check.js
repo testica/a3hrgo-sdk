@@ -1,5 +1,6 @@
 'use strict';
 
+const puppeteer = require('puppeteer');
 const Login = require('./login');
 
 module.exports = async ({user, password}) => {

@@ -31,7 +31,7 @@ a3hrgo-cli
 
  Usage:
     a3hrgo-cli check
-    a3hrgo-cli config save
+    a3hrgo-cli config save <user> <password>
     a3hrgo-cli config print
     a3hrgo-cli -v
 
@@ -46,17 +46,19 @@ const main = async (options) => {
 
     // Preferences store with default undefined values
     const prefs = new Preferences('com.work.a3hrgo.cli', {
-        user: undefined,
-        pass: undefined
+        a3hrgo: {
+            user: undefined,
+            password: undefined
+        }
     });
 
-     // Load configurations giving preference to environment variables
-     const preferences = defaults(
-        {
+    // Load configurations giving preference to environment variables
+    const preferences = defaults(
+       {
             user: A3HRGO_USER,
-            pass: A3HRGO_PASSWORD
+            password: A3HRGO_PASSWORD
         },
-        prefs
+        prefs.a3hrgo
     );
 
     if (options.version) {
@@ -64,16 +66,18 @@ const main = async (options) => {
     }
 
     if (options.check) {
-        // return Check(preferences);
-        return console.info('check');
+        return Check(preferences);
     }
 
-    if (options.config){
-        if (options.save){
-            //prefs = preferences;
+    if (options.config) {
+        if (options.save) {
+            prefs.a3hrgo = {
+                user: options['<user>'],
+                password: options['<password>']
+            };
             return;
         }
-        if (options.print){
+        if (options.print) {
             return console.log(prefs);
         }
     }
