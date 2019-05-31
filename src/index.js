@@ -10,11 +10,6 @@ const { docopt } = require('docopt');
 const { version } = require('../package');
 const Check = require('./check.js');
 
-const {
-    A3HRGO_USER,
-    A3HRGO_PASSWORD
-} = process.env;
-
 const wrapOptions = (opt) =>
 
     new Proxy(opt, {
@@ -30,7 +25,7 @@ a3hrgo-cli
  Options can be read from a stored configuration or provided through environment variables.
 
  Usage:
-    a3hrgo-cli check
+    a3hrgo-cli check [--user=<user>] [--password=<password>]
     a3hrgo-cli config save <user> <password>
     a3hrgo-cli config print
     a3hrgo-cli -v
@@ -55,8 +50,8 @@ const main = async (options) => {
     // Load configurations giving preference to environment variables
     const preferences = defaults(
        {
-            user: A3HRGO_USER,
-            password: A3HRGO_PASSWORD
+            user: options.user,
+            password: options.password
         },
         prefs.a3hrgo
     );
@@ -72,8 +67,8 @@ const main = async (options) => {
     if (options.config) {
         if (options.save) {
             prefs.a3hrgo = {
-                user: options['<user>'],
-                password: options['<password>']
+                user: options.user,
+                password: options.password
             };
             return;
         }
