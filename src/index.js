@@ -84,4 +84,5 @@ const options = wrapOptions(docopt(help));
 main(options)
     .catch((err) => {
         console.error(err);
+        process.exit(1);
     });
