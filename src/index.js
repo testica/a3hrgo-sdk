@@ -32,7 +32,6 @@ a3hrgo-cli
 
  Options:
     -v --version                    Show the version of the tool
-    -e --environment <NAME=value>   Adds a new environment variable to the list of already existing environment variables
 `;
 
 const login = require('./login');
