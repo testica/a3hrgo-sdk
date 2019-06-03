@@ -11,6 +11,10 @@
     "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "engines": {
+    "node": ">=6.0.0",
+    "npm": ">=6.9.0"
+  },
   "author": "Leonardo Testa",
   "license": "ISC",
   "dependencies": {

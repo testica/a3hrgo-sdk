@@ -4,43 +4,40 @@
 - Node >= 6
 - NPM
 
-
 ### Install
 
-- Clone repository
-    
-    `git clone https://github.com/testica/a3hrgo-assistant`
-
-- Inside project install dependencies
-
-    `npm install`
+    `npm install -g a3hrgo`
 
 ### Setup
 
-In order to allow a3HRgo assistant to makes report, you need to supply your ID and PASSWORD under environment variable into `.env` file
-
-``` bash
-# inside root project
-touch .env
-
-echo "ID=<YOUR_A3HRGO_ID>" >> .env
-echo "PASSWORD=<YOUR_A3HRGO_PASSWORD>" >> .env
+In order to allow a3HRgo assistant to makes report, you need to supply your ID and PASSWORD
 
 ```
+  a3hrgo-cli config save [user] [password]
+```
 
-a3HRgo assistant under the hood use [puppeteer](https://github.com/GoogleChrome/puppeteer), so you can disable the headless mode using `INTERFACE` variable an set to true
+Those values would be stored in your computer so next time you can just check, if you want to see the values
 
-``` bash
-# INTERFACE = true shows the browser interaction
-echo "INTERFACE=true" >> .env
+```
+  a3hrgo-cli config print
 ```
 
 ### Usage
 
 Stop! I want to report!
 
-To run the script you only have to do:
-
-`npm start`
-
+```
+  a3hrgo-cli check
+```
 (Be careful, run this only when be necessary, so you can fuck up your report history)
+
+If you want to check with other user and password different from the stored ones
+
+```
+  a3hrgo-cli check [--user=user] [--password=password]
+```
+In case you have doubts about the tool, you can always check the documentation
+
+```
+  a3hrgo-cli -h
+```
