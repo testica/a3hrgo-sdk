@@ -1,26 +1,24 @@
-#!/usr/bin/env node
+import Puppeteer from 'puppeteer'
 
-'use strict'
+import Login from './login'
+import { Options, Credentials } from './types'
 
-require('dotenv').config({
-    path: `${require('path').dirname(require.main.filename)}/.env`
-})
+/**
+ * Report
+ * Resolve a report process doing a login
+ * and then proper navigation until report
+ */
+export default async (credentials: Credentials, { showInterface }: Options) => {
+    const headless = !showInterface
 
-const puppeteer = require('puppeteer');
-
-const login = require('./login');
-
-(async () => {
-    const headless = process.env.INTERFACE !== "true"
-
-    const browser = await puppeteer.launch({ headless });
+    const browser = await Puppeteer.launch({ headless });
     const page = await browser.newPage();
 
     // go to main page
     await page.goto('https://ecolex.a3hrgo.com');
 
     // do login
-    await login(page, process.env.ID, process.env.PASSWORD);
+    await Login(page, credentials)
 
     // go to report page
     await Promise.all([
@@ -39,4 +37,4 @@ const login = require('./login');
     if (!headless) await page.waitFor(3000)
 
     await browser.close();
-})();
+}

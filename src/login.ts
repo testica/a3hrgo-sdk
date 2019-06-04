@@ -1,8 +1,13 @@
-'use strict'
+import { Page } from 'puppeteer'
+import { Credentials } from './types'
 
-module.exports = async (page, id, password) => {
-    await page.type('input#Login', id);
-    await page.type('input#Password', password);
+/**
+ * Login
+ * Resolve login process using credentials
+ */
+export default async (page: Page, credential: Credentials) => {
+    await page.type('input#Login', credential.id);
+    await page.type('input#Password', credential.password);
 
     const finalResponse = await Promise.all([
         page.waitForResponse(response =>  {
