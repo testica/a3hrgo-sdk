@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A3hrgo SDK headless-chrome based",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
