@@ -1,9 +1,9 @@
 
-export type Credentials = {
+export interface Credentials {
     id: string;
     password: string;
 }
 
-export type Options = {
+export interface Options {
     showInterface: boolean;
 }

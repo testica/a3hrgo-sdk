@@ -1,20 +1,21 @@
-import { Page } from 'puppeteer'
-import { Credentials } from './types'
+import { Page, Response } from 'puppeteer';
+
+import { Credentials } from './types';
 
 /**
  * Login
  * Resolve login process using credentials
  */
-export default async (page: Page, credential: Credentials) => {
+export default async (page: Page, credential: Credentials): Promise<void> => {
     await page.type('input#Login', credential.id);
     await page.type('input#Password', credential.password);
 
     const finalResponse = await Promise.all([
-        page.waitForResponse(response =>  {
-            return response.url() === 'https://ecolex.a3hrgo.com/Account/Login?ReturnUrl=%2F'
+        page.waitForResponse((response): boolean => {
+            return response.url() === 'https://ecolex.a3hrgo.com/Account/Login?ReturnUrl=%2F';
         }),
         await page.click('input.btnLogin')
-    ]).then(([response, _]) => response)
+    ]).then( ([response]): Response => response);
 
     if (finalResponse.status() === 302) {
         console.log('Login OK');
@@ -22,4 +23,4 @@ export default async (page: Page, credential: Credentials) => {
         console.log('Login ERROR');
         throw new Error('Login error, please check your credentials');
     }
-}
+};

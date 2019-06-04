@@ -1,2 +1,2 @@
-export * from './a3hrgo'
-export * from './types'
+export * from './a3hrgo';
+export * from './types';
