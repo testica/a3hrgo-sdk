@@ -3,6 +3,7 @@
     "target": "es5",
     "module": "commonjs",
     "lib": ["es2017", "es7", "es6", "dom"],
+    "moduleResolution": "node",
     "sourceMap": true,
     "rootDir": "src",
     "outDir": "dist",
@@ -11,5 +12,5 @@
     "esModuleInterop": true,
   },
   "include": ["src/**/*.ts"],
-  "exclude": [ "node_modules"],
+  "exclude": [ "node_modules", "dist"],
 }

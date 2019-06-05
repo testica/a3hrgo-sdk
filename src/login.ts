@@ -6,9 +6,9 @@ import { Credentials } from './types';
  * Login
  * Resolve login process using credentials
  */
-export default async (page: Page, credential: Credentials): Promise<void> => {
-    await page.type('input#Login', credential.id);
-    await page.type('input#Password', credential.password);
+export default async (page: Page, credentials: Credentials): Promise<void> => {
+    await page.type('input#Login', credentials.id);
+    await page.type('input#Password', credentials.password);
 
     const finalResponse = await Promise.all([
         page.waitForResponse((response): boolean => {
