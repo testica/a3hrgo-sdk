@@ -10,6 +10,10 @@
   },
   "author": "Leonardo Testa",
   "license": "ISC",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/testica/a3hrgo-assistant"
+  },
   "dependencies": {
     "dotenv": "^8.0.0",
     "puppeteer": "^1.16.0"

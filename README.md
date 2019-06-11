@@ -1,4 +1,4 @@
-# a3HRgo assistant
+# a3HRgo SDK
 
 ### Requisites
 - Node >= 6
@@ -7,51 +7,33 @@
 
 ### Install
 
-- Clone repository
-    
-    `git clone https://github.com/testica/a3hrgo-assistant`
-
-- Inside project install dependencies
-
-    `npm install`
-
-### Setup
-
-In order to allow a3HRgo assistant to makes report, you need to supply your ID and PASSWORD under environment variable into `.env` file
-
-``` bash
-# inside root project
-touch .env
-
-echo "ID=<YOUR_A3HRGO_ID>" >> .env
-echo "PASSWORD=<YOUR_A3HRGO_PASSWORD>" >> .env
-
 ```
-
-a3HRgo assistant under the hood use [puppeteer](https://github.com/GoogleChrome/puppeteer), so you can disable the headless mode using `INTERFACE` variable an set to true
-
-``` bash
-# INTERFACE = true shows the browser interaction
-echo "INTERFACE=true" >> .env
+npm install a3hrgo-sdk
 ```
 
 ### Usage
 
-Stop! I want to report!
+``` ts
+import { A3hrgo } from 'a3hrgo-sdk';
 
-To run the script you only have to do:
+const a3hrgo = new A3hrgo({
+     id: "xxxx", password: "xxxx"
+});
 
-`npm start`
+// Do a report
+(async () => {
+    await a3hrgo.report();
+})();
 
-(Be careful, run this only when be necessary, so you can fuck up your report history)
+```
 
+### API
 
----
+- `A3hrgo(credentials, options)` class constructor
+    - credentials: object
+        - id: string
+        - password: string
+    - options: object
+        - showInterface: boolean to enable/disable headless chrome
 
-Also, you can make a symlink and run from everywhere
-
-`npm link`
-
-Now, run wherever you want using
-
-`a3hrgo-assistant`
+- `report()` async method class to do a report
