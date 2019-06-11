@@ -1,10 +1,11 @@
 {
-  "name": "a3hrgo-assistant",
+  "name": "a3hrgo-sdk",
   "version": "1.0.0",
-  "description": "Let a3hrgo assistant makes your reports",
-  "main": "index.js",
+  "description": "A3hrgo SDK headless-chrome based",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "start": "node index.js",
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Leonardo Testa",
@@ -13,7 +14,12 @@
     "dotenv": "^8.0.0",
     "puppeteer": "^1.16.0"
   },
-  "bin": {
-    "a3hrgo-assistant": "./index.js"
+  "devDependencies": {
+    "@types/puppeteer": "^1.12.4",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-import": "^2.17.3",
+    "typescript": "^3.5.1"
   }
 }
