@@ -1,4 +1,5 @@
 # a3HRgo SDK
+[![npm version](https://badge.fury.io/js/a3hrgo-sdk.svg)](https://badge.fury.io/js/a3hrgo-sdk)
 
 ### Requisites
 - Node >= 6
