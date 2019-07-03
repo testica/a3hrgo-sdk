@@ -13,7 +13,7 @@ export default async (credentials: Credentials, { showInterface }: Options): Pro
 
     const browser = await Puppeteer.launch({
         headless,
-        args: ['--no-sandbox']
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
     const page = await browser.newPage();
 
