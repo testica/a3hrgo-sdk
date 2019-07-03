@@ -11,7 +11,10 @@ import { Options, Credentials } from './types';
 export default async (credentials: Credentials, { showInterface }: Options): Promise<void> => {
     const headless = !showInterface;
 
-    const browser = await Puppeteer.launch({ headless });
+    const browser = await Puppeteer.launch({
+        headless,
+        args: ['--no-sandbox']
+    });
     const page = await browser.newPage();
 
     // go to main page
