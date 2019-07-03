@@ -1,6 +1,6 @@
 {
   "name": "a3hrgo-sdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A3hrgo SDK headless-chrome based",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
